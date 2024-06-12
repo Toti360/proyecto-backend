@@ -1,1 +1,47 @@
-[]
+[
+    {
+        "id": 1,
+        "title": "Tomate",
+        "description": "Lata de tomate al natural",
+        "price": "1000",
+        "thumbnails": "sin imagen",
+        "code": "a123",
+        "stock": "15"
+    },
+    {
+        "id": 2,
+        "title": "Harina",
+        "description": "Harina 000 x 1kg",
+        "price": "1200",
+        "thumbnails": "sin imagen",
+        "code": "a124",
+        "stock": "25"
+    },
+    {
+        "id": 3,
+        "title": "Aceite",
+        "description": "Aceite de girasol x 1lt",
+        "price": "2000",
+        "thumbnails": "sin imagen",
+        "code": "a125",
+        "stock": "10"
+    },
+    {
+        "id": 4,
+        "title": "Azúcar",
+        "description": "Azúcar Fronterita x 1kg",
+        "price": "1100",
+        "thumbnails": "sin imagen",
+        "code": "a126",
+        "stock": "15"
+    },
+    {
+        "id": 5,
+        "title": "Vino",
+        "description": "Vino Malbec 750cc",
+        "price": "1800",
+        "thumbnails": "sin imagen",
+        "code": "a127",
+        "stock": "5"
+    }
+]

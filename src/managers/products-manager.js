@@ -1,22 +1,24 @@
 
 import fs from 'fs/promises';
-import path from 'path';
 
 class ProductManager {
     static ultId = 0;
 
     constructor(path) {
-        this.products = [];
+        //this.products = [];
         this.path = path;
     }
 
-    async addProduct(title, description, price, thumbnail, code, stock) {
+    async addProduct({title, description, price, thumbnail, code, stock}) {
+        try {
+            const allProducts = await this.leerArchivo();
+        
         if (!title || !description || !price || !thumbnail || !code || !stock) {
             console.log("Todos los campos son obligatorios!!");
             return;
         }
 
-        if (this.products.some(item => item.code === code)) {
+        if (allProducts.some(item => item.code === code)) {
             console.log("El código debe ser único");
             return;
         }
@@ -31,20 +33,29 @@ class ProductManager {
             stock
         };
 
-        this.products.push(nuevoProducto);
+        allProducts.push(nuevoProducto);
         // Guardado en el archivo
-        await this.guardarArchivo(this.products);
+        await this.guardarArchivo(allProducts);
+        } catch (error) {
+            console.log("Error al agregar producto", error);
+            throw error;
+        }
     }
 
     async getProducts() {
-        let arrayProductos = await this.leerArchivo();
-        return arrayProductos;
+        try {
+            const arrayProductos = await this.leerArchivo();
+            return arrayProductos;
+        } catch (error) {
+            console.log("Error al leer el archivo", error);
+            throw error;
+        }
     }
 
     async getProductById(id) {
         try {
-            const productos = await this.leerArchivo();
-            const producto = productos.find(item => item.id === id);
+            const allProducts = await this.leerArchivo();
+            const producto = allProducts.find(item => item.id === id);
             if (!producto) {
                 console.error("Not Found");
                 return null;

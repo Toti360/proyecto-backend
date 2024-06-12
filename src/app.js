@@ -9,11 +9,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-    res.send("BIENVENIDOS AL SUPER");
+    res.send("BIENVENIDOS AL SUPER MAROLIO.!!!");
     })
 
-app.use("/apis/products", productsRouter);
-app.use("/apis/carts", cartsRouter);
+app.use("/api/products", productsRouter);
+app.use("/api/carts", cartsRouter);
 
 app.listen(PUERTO, () => {
 console.log(`El servidor está escuchando en el puerto ${PUERTO}`);
