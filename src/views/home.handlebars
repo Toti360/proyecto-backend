@@ -1,0 +1,22 @@
+
+<div class="container">
+        <h1>TODOS LOS PRODUCTOS</h1>
+
+        <ul class="product-list">
+            {{#each productos}}
+            <li class="product-item">
+        <p><strong>ID:</strong> {{id}}</p>
+        <p><strong>Título:</strong> {{title}}</p>
+        <p><strong>Descripción:</strong> {{description}}</p>
+        <p><strong>Precio:</strong> {{price}}</p>
+        <p><strong>Imagen:</strong> {{thumbnails}}</p>
+        <p><strong>Código:</strong> {{code}}</p>
+        <p><strong>Stock:</strong> {{stock}}</p>
+        <p><strong>Categoría:</strong> {{category}}</p>
+            </li>
+            {{else}}
+            <li class="product-item">No hay productos disponibles.</li>
+            {{/each}}
+        </ul>
+    </div>
+

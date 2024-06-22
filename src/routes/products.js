@@ -5,7 +5,7 @@ const router = express.Router();
 
 const productManager = new ProductManager("./src/data/products.json");
 
-//Listar todos los productos. 
+//Listar todos los productos
 router.get("/", async (req, res) => {
     try {
         const limit = req.query.limit;
@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-//Traer solo producto por id 
+//Trae solo producto por id 
 
 router.get("/:pid", async (req, res) => {
     const id = req.params.pid;
@@ -46,7 +46,7 @@ router.get("/:pid", async (req, res) => {
 });
 
 
-//Agregar nuevo producto
+//Agregar producto
 
 router.post("/", async (req, res) => {
     const nuevoProducto = req.body;

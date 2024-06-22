@@ -20,10 +20,12 @@ class CartManager {
                 this.ultId = Math.max(...this.carts.map(cart => cart.id));
             //Utilizo el map para crear un nuevo array que solo tenga los id del carrito y luego con Math.max obtengo el mayor. 
             }
+            return this.carts; 
         } catch (error) {
             if (error.code === 'ENOENT') {
                 console.log(`El archivo ${this.path} no existe, se creará uno nuevo.`);
                 await this.guardarCarritos();
+                return this.carts;
             } else {
                 console.error("Error al cargar los carritos desde el archivo", error);
             }
@@ -31,7 +33,11 @@ class CartManager {
     }
 
     async guardarCarritos() {
-        await fs.writeFile(this.path, JSON.stringify(this.carts, null, 2));
+        try {
+            await fs.writeFile(this.path, JSON.stringify(this.carts, null, 2));
+        } catch (error) {
+            console.error("Error al guardar los carritos", error);
+        }
     }
 
     async crearCarrito() {
@@ -42,7 +48,7 @@ class CartManager {
 
         this.carts.push(nuevoCarrito);
 
-        //Guardamos el array en el archivo
+        //Guardo el array
         await this.guardarCarritos();
         return nuevoCarrito;
     }

@@ -1,0 +1,49 @@
+
+<h1>REAL TIME PRODUCTS</h1>
+
+<div id="contenedorProductos"></div>
+
+<h2>Formulario para Agregar Productos</h2>
+
+<form class="formularioProductos">
+    <div class="form-group">
+        <label for="title">Título:</label>
+        <input type="text" id="title" class="form-control" placeholder="Título">
+    </div>
+    <div class="form-group">
+        <label for="description">Descripción:</label>
+        <input type="text" id="description" class="form-control" placeholder="Descripción">
+    </div>
+    <div class="form-group">
+        <label for="price">Precio:</label>
+        <input type="number" id="price" class="form-control" placeholder="Precio">
+    </div>
+    <div class="form-group">
+        <label for="thumbnails">Imagen:</label>
+        <input type="text" id="thumbnails" class="form-control" value="Sin Imagen">
+    </div>
+    <div class="form-group">
+        <label for="code">Código:</label>
+        <input type="text" id="code" class="form-control" placeholder="Código">
+    </div>
+    <div class="form-group">
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" class="form-control" placeholder="Stock">
+    </div>
+    <div class="form-group">
+        <label for="category">Categoría:</label>
+        <input type="text" id="category" class="form-control" placeholder="Categoría">
+    </div>
+    <div class="form-group">
+        <label for="status">Estado:</label>
+        <select id="status" class="form-control">
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+        </select>
+    </div>
+    <button type="button" id="btnEnviar" class="btn btn-primary">Enviar</button>
+</form>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="js/main.js"></script>
+
