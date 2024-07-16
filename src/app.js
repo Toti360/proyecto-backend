@@ -4,7 +4,8 @@ import { Server } from "socket.io";
 import productsRouter from "./routes/products.js";
 import cartsRouter from "./routes/carts.js";
 import viewsRouter from "./routes/views.js";
-import ProductManager from "./managers/products-manager.js";
+import ProductManager from "./dao/fs/products-manager.js";
+import "./database.js";
 
 const app = express();
 const PUERTO = 8080;
@@ -18,7 +19,7 @@ app.set("view engine", "handlebars");
 app.set("views", "./src/views");
 
 app.get("/", (req, res) => {
-    res.send("BIENVENIDOS AL SUPER MAROLIO.!!!");
+    res.send("BIENVENIDOS AL SUPER MAROLIO CON MONGOOSE.!!!");
     })
 
 app.use("/api/products", productsRouter);
@@ -45,8 +46,8 @@ io.on("connection", async (socket) => {
         io.sockets.emit("productos", await productManager.getProducts());
     });
 
-     //Agrega Productos con Formulario 
-     socket.on("agregarProducto", async (producto) => {
+    //Agrega Productos con Formulario 
+    socket.on("agregarProducto", async (producto) => {
         await productManager.addProduct(producto); 
         //Lista actualizada
         io.sockets.emit("productos", await productManager.getProducts());

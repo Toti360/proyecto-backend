@@ -1,1 +1,2 @@
-# PRIMER PREENTREGA DE BACKEND ROXANA ABUGAUCH
+# PROYECTO FINAL BACKEND I  -  Es un e-commerce de productos de supermercado. Conectado a uan base de datos en la nube.
+# Para eso, se ha usado NodeJS, Servidores, Express, Router, como Motor de Plantillas Handlebars, Websockets, MongoDB y Mongoose.

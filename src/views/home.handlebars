@@ -1,22 +1,36 @@
-
 <div class="container">
-        <h1>TODOS LOS PRODUCTOS</h1>
+    <h1>TODOS LOS PRODUCTOS</h1>
 
-        <ul class="product-list">
-            {{#each productos}}
-            <li class="product-item">
-        <p><strong>ID:</strong> {{id}}</p>
-        <p><strong>Título:</strong> {{title}}</p>
-        <p><strong>Descripción:</strong> {{description}}</p>
-        <p><strong>Precio:</strong> {{price}}</p>
-        <p><strong>Imagen:</strong> {{thumbnails}}</p>
-        <p><strong>Código:</strong> {{code}}</p>
-        <p><strong>Stock:</strong> {{stock}}</p>
-        <p><strong>Categoría:</strong> {{category}}</p>
-            </li>
-            {{else}}
-            <li class="product-item">No hay productos disponibles.</li>
-            {{/each}}
-        </ul>
+    <ul class="product-list">
+        {{#each docs}}
+        <li class="product-item">
+            <p><strong>ID:</strong> {{_id}}</p>
+            <p><strong>Título:</strong> {{title}}</p>
+            <p><strong>Descripción:</strong> {{description}}</p>
+            <p><strong>Precio:</strong> {{price}}</p>
+            <p><strong>Imagen:</strong> {{thumbnails}}</p>
+            <p><strong>Código:</strong> {{code}}</p>
+            <p><strong>Stock:</strong> {{stock}}</p>
+            <p><strong>Categoría:</strong> {{category}}</p>
+            <form action="/api/carts/:cid/products/{{_id}}" method="post">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit">Agregar al carrito</button>
+            </form>
+        </li>
+        {{else}}
+        <li class="product-item">No hay productos disponibles.</li>
+        {{/each}}
+    </ul>
+
+    <div class="pagination">
+        {{#if hasPrevPage}}
+        <a href="/productos?page={{prevPage}}&limit={{limit}}&sort={{sort}}">Anterior</a>
+        {{/if}}
+
+        <span>Página {{page}} de {{totalPages}}</span>
+
+        {{#if hasNextPage}}
+        <a href="/productos?page={{nextPage}}&limit={{limit}}&sort={{sort}}">Siguiente</a>
+        {{/if}}
     </div>
-
+</div>

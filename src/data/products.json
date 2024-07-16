@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "title": "Tomate",
     "description": "Lata de tomate al natural",
     "price": "1000",
@@ -11,7 +10,6 @@
     "status": true
   },
   {
-    "id": 2,
     "title": "Harina",
     "description": "Harina 000 x 1kg",
     "price": "1200",
@@ -22,7 +20,6 @@
     "status": true
   },
   {
-    "id": 3,
     "title": "Aceite",
     "description": "Aceite de girasol x 1lt",
     "price": "2000",
@@ -33,7 +30,6 @@
     "status": true
   },
   {
-    "id": 4,
     "title": "Azúcar",
     "description": "Azúcar Fronterita x 1kg",
     "price": "1100",
@@ -44,7 +40,6 @@
     "status": true
   },
   {
-    "id": 5,
     "title": "Vino",
     "description": "Vino Malbec 750cc",
     "price": "1800",
@@ -55,7 +50,6 @@
     "status": true
   },
   {
-    "id": 6,
     "title": "Leche",
     "description": "Leche Entera 1LT",
     "price": "1500",
@@ -66,7 +60,6 @@
     "status": true
   },
   {
-    "id": 7,
     "title": "Mayonesa",
     "description": "La más RicKa",
     "price": "2000",
@@ -77,7 +70,6 @@
     "status": true
   },
   {
-    "id": 8,
     "title": "Yogurt",
     "description": "El más Probiótico",
     "price": "1750",
@@ -88,7 +80,6 @@
     "status": true
   },
   {
-    "id": 9,
     "title": "Pan",
     "description": "Pan de Masa Madre",
     "price": "1100",
@@ -99,7 +90,6 @@
     "status": true
   },
   {
-    "id": 10,
     "title": "Sal",
     "description": "Sal Fina",
     "price": "500",
@@ -117,7 +107,6 @@
     "code": "a133",
     "stock": "18",
     "category": "Almacén",
-    "status": true,
-    "id": 11
+    "status": true
   }
 ]
