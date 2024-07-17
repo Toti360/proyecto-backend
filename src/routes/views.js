@@ -27,7 +27,7 @@ router.get("/productos", async (req, res) => {
 
     try {
         const productos = await productManager.getProducts({}, options);
-        res.render("home", { productos });
+        res.render("home", { productos: productos.docs, ...productos });
     } catch (error) {
         console.error("Error al mostrar los productos", error);
         res.status(500).json({ error: "Error interno del servidor" });
