@@ -34,7 +34,7 @@ class CartManager {
             const carts = await CartModel.find();
             return carts;
         } catch (error) {
-            console.error("Error al listar los carritos existentes");
+            console.error("Error al listar los carritos.!");
         }
     }
 

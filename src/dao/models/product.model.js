@@ -39,7 +39,7 @@ const productoSchema = new mongoose.Schema({
     }
 });
 
-// Añadir el plugin de paginación al esquema
+// Añadí el plugin de paginación al esquema
 productoSchema.plugin(mongoosePaginate);
 
 const ProductModel = mongoose.model("Product", productoSchema);
