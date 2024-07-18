@@ -29,6 +29,15 @@ class CartManager {
         }
     }
 
+    async obtenerCarritos() {
+        try {
+            const carts = await CartModel.find();
+            return carts;
+        } catch (error) {
+            console.error("Error al listar los carritos existentes");
+        }
+    }
+
     async agregarProductoAlCarrito(cartId, productId, quantity = 1) {
         try {
             const carrito = await this.getCarritoById(cartId);

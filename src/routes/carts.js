@@ -14,6 +14,16 @@ router.post("/", async (req, res) => {
     }
 });
 
+router.get("/", async (req, res) => {
+    try {
+        const cart = await cartManager.obtenerCarritos();
+        res.status(200).json(cart);
+    } catch (error) {
+        console.error("Error al listar los carritos", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+});
+
 router.get("/:cid", async (req, res) => {
     const cartId = req.params.cid;
 
