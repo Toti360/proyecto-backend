@@ -129,7 +129,79 @@ select {
     border-radius: 4px;
 }
 
-.btn:hover {
-    background-color: #0056b3;
+
+/* Estilos para el Registro y Logeo */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    border-bottom: 1px solid #007bff;
+    background-color: #f8f9fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+header div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header div p {
+    margin: 10px;
+}
+
+header div a {
+    background-color: #007bff;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px;
+}
+
+form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+form label {
+    color: #007bff;
+    font-weight: bold;
+}
+
+form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; 
+}
+
+button:hover {
+    background-color: #0f4680;
+}
+
+a:hover {
+    background-color: #0f4680;
+}
