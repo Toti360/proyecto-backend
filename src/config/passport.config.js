@@ -3,6 +3,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as JWTStrategy, ExtractJwt } from "passport-jwt";
 import CartManager from "../dao/db/cart-manager-db.js";
 import UserModel from "../dao/models/user.model.js";
+import jwt from "passport-jwt";
 import { createHash, isValidPassword } from "../utils/hashbcrypt.js";
 
 // Instancia del gestor de carritos

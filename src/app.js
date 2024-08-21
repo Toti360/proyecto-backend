@@ -12,6 +12,7 @@ import sessionRouter from "./routes/sessions.js";
 import initializePassport from "./config/passport.config.js";
 import passport from "passport";
 import cookieParser from "cookie-parser";
+import jwt from "jsonwebtoken";
 
 const app = express();
 const PUERTO = 8080;
@@ -79,4 +80,3 @@ socket.on("agregarProducto", async (producto) => {
     io.sockets.emit("productos", await productManager.getProducts());
     });
 });
-

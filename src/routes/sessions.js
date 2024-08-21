@@ -1,4 +1,3 @@
-
 import { Router } from "express";
 import UserModel from "../dao/models/user.model.js";
 import { createHash, isValidPassword } from "../utils/hashbcrypt.js";
@@ -10,31 +9,31 @@ const JWT_SECRET = "coderhouse";
 
 // Ruta de registro
 router.post("/register", async (req, res) => {
-    const { usuario, password } = req.body;
+    const { user, password } = req.body;
 
     try {
         // Verificamos si el usuario ya existe
-        const existeUsuario = await UserModel.findOne({ usuario });
+        const existeUser = await UserModel.findOne({ user });
 
-        if (existeUsuario) {
+        if (existeUser) {
             return res.status(400).send("El usuario ya existe");
         }
 
         // Creamos el nuevo usuario
-        const nuevoUsuario = new UserModel({
-            usuario,
+        const newUser = new UserModel({
+            user,
             password: createHash(password)
         });
 
         // Lo guardamos
-        await nuevoUsuario.save();
+        await newUser.save();
 
         // Generamos el token de JWT
-        const token = jwt.sign({ usuario: nuevoUsuario.usuario, rol: nuevoUsuario.rol }, JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ user: newUser.user, role: newUser.role }, JWT_SECRET, { expiresIn: "1h" });
 
         // Generamos la cookie
         res.cookie("coderCookieToken", token, {
-            maxAge: 3600000, // 1 hora de vida
+            maxAge: 3600000,
             httpOnly: true // Accesible solo mediante peticiones HTTP
         });
 
@@ -47,24 +46,24 @@ router.post("/register", async (req, res) => {
 
 // Ruta de login
 router.post("/login", async (req, res) => {
-    const { usuario, password } = req.body;
+    const { user, password } = req.body;
 
     try {
         // Buscamos el usuario en MongoDB
-        const usuarioEncontrado = await UserModel.findOne({ usuario });
+        const userEncontrado = await UserModel.findOne({ user });
 
         // Verificamos si el usuario existe
-        if (!usuarioEncontrado) {
+        if (!userEncontrado) {
             return res.status(401).send("Usuario no válido");
         }
 
         // Verificamos la contraseña
-        if (!isValidPassword(password, usuarioEncontrado)) {
+        if (!isValidPassword(password, userEncontrado)) {
             return res.status(401).send("Contraseña incorrecta");
         }
 
         // Generamos el token de JWT
-        const token = jwt.sign({ usuario: usuarioEncontrado.usuario, rol: usuarioEncontrado.rol }, JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ user: userEncontrado.user, role: userEncontrado.role }, JWT_SECRET, { expiresIn: "1h" });
 
         // Generamos la cookie
         res.cookie("coderCookieToken", token, {
@@ -80,22 +79,12 @@ router.post("/login", async (req, res) => {
 });
 
 // Ruta para obtener la información del usuario actual
-router.get("/productos", (req, res) => {
-    const token = req.cookies["coderCookieToken"];
-    if (!token) {
-        return res.status(401).send("No autenticado");
+router.get("/productos", passport.authenticate("jwt", { session: false }), (req, res) => {
+    if (req.user) {
+        res.render("home", { user: req.user.user });
+    } else { 
+        res.status(401).send("No Autenticado, Token Inválido");
     }
-
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-        if (err) {
-            return res.status(401).send("Token inválido");
-        }
-
-        res.json({
-            usuario: decoded.usuario,
-            rol: decoded.rol
-        });
-    });
 });
 
 // Ruta para cerrar sesión
@@ -107,11 +96,11 @@ router.get("/logout", (req, res) => {
 //Ruta exclusiva para admins: 
 
 router.get("/admin", passport.authenticate("jwt", {session:false}), (req, res) => {
-    if(req.user.rol !== "admin") {
-        return res.status(403).send("Acceso denegado, no eres Admin.!!"); 
+    if(req.user.role !== "admin") {
+        return res.status(403).send("Acceso denegado, no eres Admin 😒!!"); 
     } 
     res.render("admin"); 
-})
+});
 
 
 export default router;
